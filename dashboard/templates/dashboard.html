@@ -1,0 +1,33 @@
+
+{% extends "base.html" %}
+
+{% include 'navbar.html' %}
+{% block content %}
+
+		<h1 style="text-align: center;">ToDo App!!! </h1>
+
+		<div>
+			    <form method="post">
+			    {% csrf_token %}
+			        <!-- {{task_form}} to display all -->
+			        {{task_form.title}} <!-- to display particular field-->
+			        <button type="submit">SUBMIT</button>
+			    </form>
+		</div>
+
+	    <ol>
+	        {% for task in tasks %}
+	            <li>
+	            	{% if task.completed == True %}
+	            		<strike>{{task.title}}</strike>
+	            	{% else %}
+	            		{{task.title}}
+	            	{% endif %}
+
+	            | <a href="{% url 'update_task' task.id %}">Update</a>
+	            | <a href="{% url 'delete_task' task.id %}">Delete</a>
+	            </li>
+	        {% endfor %}
+	    </ol>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+
+{% include 'navbar.html' %}
+{% block content %}
+
+		<h1><span>{{request.user}}</span>! </h1>
+			{% if messages %}
+			   {% for message in messages %}
+
+	                        <p class="text-danger">{{ message }}</p>
+
+	            {% endfor %}
+            {% endif %}
+{% endblock %}

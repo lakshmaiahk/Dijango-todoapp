@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% include 'navbar.html' %}
+{% block content %}
+
+	<div class="container">
+		<form action="login" method="POST" >
+
+			<input type="text" name="username" value="" placeholder="Enter Username..."><br><br>
+			<input type="password" name="password" value="" placeholder="Enter Password.."><br><br>
+
+			<button type="submit">Login</button>
+			<a href="/signup_page">Register</a>
+		</form>
+			{% if messages %}
+			   {% for message in messages %}
+
+		                    <li>{{ message }}</li>
+
+		        {% endfor %}
+		    {% endif %}
+	</div>
+{% endblock %}
